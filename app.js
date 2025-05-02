@@ -1,12 +1,30 @@
 const express = require('express');
+const morgan = require('morgan')
+const mongoose = require('mongoose');
 
 const app = express();
+
+const mongoDbUser = "viktor"
+const mongoDbPassword="N9udQ45o2aVCr5O8"
+
+//connect to mongo db
+const DB_URI = `mongodb+srv://${mongoDbUser}:${mongoDbPassword}@cluster0.ronxkun.mongodb.net/nodejs_blog?retryWrites=true&w=majority&appName=Cluster0`
+
+mongoose.connect(DB_URI)
+.then((result) =>{
+    app.listen(3000)
+    console.log("connected to db")})
+.catch((er) => console.log(err))
+
 
 //register view engie
 app.set("view engine", "ejs")
 // listen for requests
 
-app.listen(3000)
+
+app.use(morgan('dev'))
+
+app.use(express.static("public"))
 
 app.get("/", (req, res) => { 
     const blogs = [
