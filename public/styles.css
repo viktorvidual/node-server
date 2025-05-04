@@ -76,6 +76,23 @@ textArea{
     border-radius: 8px;
 
 }
+
+.blogs a{
+    display: block;
+    margin: 40px 0;
+    padding-left: 30px;
+    border-left: 6px solid #87CEFA;
+}
+
+.blogs a:hover h3{
+    color: #87CEFA
+}
+
+.delete{
+    color: red;
+    cursor: pointer;
+}
+
 footer{
     color: #777;
     text-align: center;

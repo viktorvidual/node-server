@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+      "target": "es2020",
+      "module": "CommonJS",
+      "moduleResolution": "node","resolveJsonModule": false,
+      "esModuleInterop": true,
+      "forceConsistentCasingInFileNames": true,
+      "strict": false,
+      "skipLibCheck": true,
+      "outDir": "dist",
+    },
+    "include": ["./**/*.ts", "app.js", "models/blog.js"],
+    "exclude": ["node_modules"]
+  }
+  
