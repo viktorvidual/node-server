@@ -3,6 +3,7 @@ const morgan = require('morgan');
 const mongoose = require('mongoose');
 const Blog = require('./models/blog'); // Remove `.ts` if it's being transpiled to JS
 const dotenv = require('dotenv');
+const { log } = require('console');
 
 dotenv.config();
 
@@ -56,12 +57,24 @@ app.get("/blogs/create", (_, res) => {
 
 app.get("/blogs/:id", (req, res) =>{ 
   const id = req.params.id;
-  console.log(id);
   Blog.findById(id)
   .then(blog => { 
     res.render('details', {
       title: "Blog Details",
       blog
+    })
+  })
+  .catch(e => console.log(e))
+})
+
+app.delete("/blogs/:id", (req, res) => { 
+  const id = req.params.id;
+  
+  Blog.findByIdAndDelete(id)
+  .then(result => { 
+    console.log("item deleted");
+    res.json({
+      redirect: "/blogs"
     })
   })
   .catch(e => console.log(e))

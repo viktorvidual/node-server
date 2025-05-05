@@ -14,5 +14,26 @@
     </div>
 
     <%- include("./partials/footer.ejs") %>
+    <script>
+        const trashcan = document.querySelector('a.delete');
+        trashcan.addEventListener("click", (event) => { 
+            const endpoint = `/blogs/${trashcan.dataset.doc}`
+            
+            fetch(endpoint, { 
+                method: "DELETE"
+            })
+            .then(response => { 
+                return response.json()
+            })
+            .then(data => {
+                console.log(data);
+                window.location.href = data.redirect
+            })
+            .catch(e => { 
+                console.log(e);
+            })
+        })
+
+    </script>
   </body>
 </html>
