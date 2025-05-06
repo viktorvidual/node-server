@@ -21,7 +21,12 @@ const blog_details = (req, res) => {
         blog
       })
     })
-    .catch(e => console.log(e))
+    .catch(e => {
+        console.log(e)
+        res.status(404).render('404', { 
+            title: "Blog Not Found"
+        })
+    })
 }
 
 const blog_create_get = (_, res) => {

@@ -38,7 +38,7 @@ app.get("/about", (_, res) => {
 app.use("/blogs", blogRoutes)
 
 app.use((_, res) => {
-  res.status(404).render("404.ejs", {
+  res.status(404).render("404", {
     title: "404"
   });
 });
